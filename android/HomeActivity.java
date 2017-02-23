@@ -19,20 +19,12 @@ public class HomeActivity extends Activity {
     
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        LinearLayout layout = new LinearLayout(this);
-        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        
-        Button button = new Button(this);
-        button.setText("Click or press any key to begin...");
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask(){
+            public void run() {
                 HomeActivity.this.startKioskActivity();
             }
-        });
-        layout.addView(button, params);
-        
-        setContentView(layout);
+        }, 500); // 0.5 seconds
     }
     
     @Override
@@ -43,7 +35,7 @@ public class HomeActivity extends Activity {
             public void run() {
                 HomeActivity.this.startKioskActivity();
             }
-        }, 20000); // 20 seconds
+        }, 500); // 0.5 seconds
     }
     
     @Override
